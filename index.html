@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html>
+   <body>
+      <div
+         class="container"
+         ng-app="MonsterHunterApp"
+         ng-controller="mainController as ctrl"
+         ng-cloak=""
+         ng-init="language = 'en'; game = 'MH4U'"
+      >
+         <div class="row">
+            <div class="col-sm-12">
+               <ol class="breadcrumb">
+                  <li
+                     itemscope="itemscope"
+                     itemtype="http://data-vocabulary.org/Breadcrumb"
+                  >
+                     <a href="https://kiranico.com/en/mh4u" itemprop="url">
+                        <span itemprop="title">MH4U</span>
+                     </a>
+                  </li>
+                  <li
+                     itemscope="itemscope"
+                     itemtype="http://data-vocabulary.org/Breadcrumb"
+                  >
+                     <a
+                        href="https://kiranico.com/en/mh4u/monster"
+                        itemprop="url"
+                     >
+                        <span itemprop="title">Monsters</span>
+                     </a>
+                  </li>
+                  <li
+                     class="active"
+                     itemscope="itemscope"
+                     itemtype="http://data-vocabulary.org/Breadcrumb"
+                  >
+                     <span itemprop="title">Seltas</span>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <span ng-init="monster = js_vars.monster"></span>
+         <div class="row">
+            <div class="col-sm-12">
+               <ul class="pager">
+                  <li>
+                     <a href="https://kiranico.com/en/mh4u/monster/remobra"
+                        >← Remobra</a
+                     >
+                  </li>
+                  <li>
+                     <a
+                        href="https://kiranico.com/en/mh4u/monster/desert-seltas"
+                        >Desert Seltas →</a
+                     >
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <h1 data-swiftype-name="title" data-swiftype-type="string">
+            Seltas
+            <i
+               class="mdi-av-hearing"
+               onclick="document.getElementById('monster-sound-effect-0').volume=0.1;document.getElementById('monster-sound-effect-0').play()"
+            >
+               <audio id="monster-sound-effect-0">
+                  Your browser does not support the <code>audio</code> element.
+                  <source
+                     src="/audio/sound_effects/em025_vo_bind.mp3"
+                     type="audio/mpeg"
+                  />
+               </audio>
+            </i>
+         </h1>
+         <div class="row">
+            <div class="col-sm-6">
+               <p data-swiftype-name="body" data-swiftype-type="text">
+                  Neopterons that use swift aerial movements to attack invaders
+                  on the ground. The sharp appendages on their heads can make
+                  their lunging attacks quite dangerous, though they sometimes
+                  overshoot their targets and slam into the ground.
+               </p>
+            </div>
+            <div class="col-sm-6">
+               <div class="row">
+                  <div class="col-sm-4">
+                     <h5>HP</h5>
+                     <table class="table table-condensed table-bordered">
+                        <tbody>
+                           <tr>
+                              <td>Base HP</td>
+                              <td>&lt;%monster.base_hp | number:0%&gt; HP</td>
+                           </tr>
+                           <tr ng-if="monster.hp_mult_low > 0">
+                              <td>Low (×&lt;%monster.hp_mult_low%&gt;)</td>
+                              <td>
+                                 &lt;%(monster.hp_mult_low * monster.base_hp) |
+                                 number:0%&gt; HP
+                              </td>
+                           </tr>
+                           <tr ng-if="monster.hp_mult_high > 0">
+                              <td>High (×&lt;%monster.hp_mult_high%&gt;)</td>
+                              <td>
+                                 &lt;%(monster.hp_mult_high * monster.base_hp) |
+                                 number:0%&gt; HP
+                              </td>
+                           </tr>
+                           <tr ng-if="monster.hp_mult_g > 0">
+                              <td>G (×&lt;%monster.hp_mult_g%&gt;)</td>
+                              <td>
+                                 &lt;%(monster.hp_mult_g * monster.base_hp) |
+                                 number:0%&gt; HP
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <div class="col-sm-4">
+                     <h5>Limping</h5>
+                     <table class="table table-condensed table-bordered">
+                        <tbody>
+                           <tr ng-if="monster.limp_low > 0">
+                              <td>Low</td>
+                              <td>&lt;%monster.limp_low | percentage%&gt;</td>
+                           </tr>
+                           <tr ng-if="monster.limp_high > 0">
+                              <td>High</td>
+                              <td>&lt;%monster.limp_high | percentage%&gt;</td>
+                           </tr>
+                           <tr ng-if="monster.limp_high_apex > 0">
+                              <td>High (Apex)</td>
+                              <td>
+                                 &lt;%monster.limp_high_apex | percentage%&gt;
+                              </td>
+                           </tr>
+                           <tr ng-if="monster.limp_g > 0">
+                              <td>G</td>
+                              <td>&lt;%monster.limp_g | percentage%&gt;</td>
+                           </tr>
+                           <tr ng-if="monster.limp_g_apex > 0">
+                              <td>G (Apex)</td>
+                              <td>
+                                 &lt;%monster.limp_g_apex | percentage%&gt;
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <div class="col-sm-4">
+                     <h5>Capture</h5>
+                     <table class="table table-condensed table-bordered">
+                        <tbody>
+                           <tr ng-if="monster.cap_low > 0">
+                              <td>Low</td>
+                              <td>&lt;%monster.cap_low | percentage%&gt;</td>
+                           </tr>
+                           <tr ng-if="monster.cap_high > 0">
+                              <td>High</td>
+                              <td>&lt;%monster.cap_high | percentage%&gt;</td>
+                           </tr>
+                           <tr ng-if="monster.cap_high_apex > 0">
+                              <td>High (Apex)</td>
+                              <td>
+                                 &lt;%monster.cap_high_apex | percentage%&gt;
+                              </td>
+                           </tr>
+                           <tr ng-if="monster.cap_g > 0">
+                              <td>G</td>
+                              <td>&lt;%monster.cap_g | percentage%&gt;</td>
+                           </tr>
+                           <tr ng-if="monster.cap_g_apex > 0">
+                              <td>G (Apex)</td>
+                              <td>&lt;%monster.cap_g_apex | percentage%&gt;</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-sm-2 col-xs-6">
+               <h5>Enraged</h5>
+               <table class="table table-condensed table-bordered">
+                  <tbody>
+                     <tr>
+                        <td>Duration</td>
+                        <td>75</td>
+                     </tr>
+                     <tr>
+                        <td>Attack</td>
+                        <td>x1.1</td>
+                     </tr>
+                     <tr>
+                        <td>Defense</td>
+                        <td>x1.0</td>
+                     </tr>
+                     <tr>
+                        <td>Speed</td>
+                        <td>x1.1</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="col-sm-4">
+               <h5>Habitat</h5>
+               <table class="table table-condensed table-bordered">
+                  <thead>
+                     <tr>
+                        <th>Map</th>
+                        <th>Start</th>
+                        <th>Areas</th>
+                        <th>Rest</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>Ancestral Steppe</td>
+                        <td>4</td>
+                        <td>2, 3, 7, 8</td>
+                        <td>9</td>
+                     </tr>
+                     <tr>
+                        <td>Sunken Hollow</td>
+                        <td>2</td>
+                        <td>4, 5, 6, 8</td>
+                        <td>7</td>
+                     </tr>
+                     <tr>
+                        <td>Primal Forest</td>
+                        <td>5</td>
+                        <td>1, 2, 4, 6, 9</td>
+                        <td>3</td>
+                     </tr>
+                     <tr>
+                        <td>Heaven's Mount</td>
+                        <td>3</td>
+                        <td>1, 2, 5, 6, 7</td>
+                        <td>3</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="col-sm-2">
+               <h5>Crown Sizes</h5>
+               <table class="table table-condensed table-bordered">
+                  <tbody>
+                     <tr>
+                        <td>Miniature</td>
+                        <td>&lt;554.3</td>
+                     </tr>
+                     <tr>
+                        <td>Large</td>
+                        <td>&gt;708.3</td>
+                     </tr>
+                     <tr>
+                        <td>King</td>
+                        <td>&gt;757.6</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="col-sm-2">
+               <h5>Stagger Limits</h5>
+               <table class="table table-condensed table-bordered">
+                  <tbody>
+                     <tr>
+                        <td class="expand">Head</td>
+                        <td>180</td>
+                        <td style="background-color: #bbb">
+                           <i class="mdi-image-lens note-red"></i>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="expand">Legs</td>
+                        <td>60</td>
+                        <td style="background-color: #bbb">
+                           <i class="mdi-image-lens note-white"></i>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="expand">Abdominal</td>
+                        <td>100</td>
+                        <td style="background-color: #bbb">
+                           <i class="mdi-image-lens note-orange"></i>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="expand"></td>
+                        <td>100</td>
+                        <td style="background-color: #bbb">
+                           <i class="mdi-image-lens note-green"></i>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="expand"></td>
+                        <td>100</td>
+                        <td style="background-color: #bbb">
+                           <i class="mdi-image-lens note-green"></i>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="expand"></td>
+                        <td>100</td>
+                        <td style="background-color: #bbb">
+                           <i class="mdi-image-lens note-green"></i>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="expand"></td>
+                        <td>100</td>
+                        <td style="background-color: #bbb">
+                           <i class="mdi-image-lens note-green"></i>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="expand"></td>
+                        <td>100</td>
+                        <td style="background-color: #bbb">
+                           <i class="mdi-image-lens note-green"></i>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <h3>Damage Chart</h3>
+         <div class="row">
+            <div class="col-sm-6" ng-show="damage_chart_A.length">
+               <table class="table table-condensed table-bordered">
+                  <thead>
+                     <tr>
+                        <th>Region</th>
+                        <th>Cut</th>
+                        <th>Impact</th>
+                        <th>Shot</th>
+                        <th>Fire</th>
+                        <th>Water</th>
+                        <th>Ice</th>
+                        <th>Thunder</th>
+                        <th>Dragon</th>
+                        <th>Dizzy</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr
+                        ng-repeat="part in damage_chart_A = (monster.monsterbodyparts | filter:{pivot:{type:'A'}})"
+                     >
+                        <td>&lt;%part.local_name%&gt;</td>
+                        <td>&lt;%part.pivot.res_cut%&gt;</td>
+                        <td>&lt;%part.pivot.res_impact%&gt;</td>
+                        <td>&lt;%part.pivot.res_shot%&gt;</td>
+                        <td>&lt;%part.pivot.res_fire%&gt;</td>
+                        <td>&lt;%part.pivot.res_water%&gt;</td>
+                        <td>&lt;%part.pivot.res_ice%&gt;</td>
+                        <td>&lt;%part.pivot.res_thunder%&gt;</td>
+                        <td>&lt;%part.pivot.res_dragon%&gt;</td>
+                        <td>&lt;%part.pivot.res_dizzy%&gt;</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="col-sm-6" ng-show="damage_chart_B.length">
+               <table class="table table-condensed table-bordered">
+                  <thead>
+                     <tr>
+                        <th>Region</th>
+                        <th>Cut</th>
+                        <th>Impact</th>
+                        <th>Shot</th>
+                        <th>Fire</th>
+                        <th>Water</th>
+                        <th>Ice</th>
+                        <th>Thunder</th>
+                        <th>Dragon</th>
+                        <th>Dizzy</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr
+                        ng-repeat="part in damage_chart_B = (monster.monsterbodyparts | filter:{pivot:{type:'B'}})"
+                     >
+                        <td>&lt;%part.local_name%&gt;</td>
+                        <td>&lt;%part.pivot.res_cut%&gt;</td>
+                        <td>&lt;%part.pivot.res_impact%&gt;</td>
+                        <td>&lt;%part.pivot.res_shot%&gt;</td>
+                        <td>&lt;%part.pivot.res_fire%&gt;</td>
+                        <td>&lt;%part.pivot.res_water%&gt;</td>
+                        <td>&lt;%part.pivot.res_ice%&gt;</td>
+                        <td>&lt;%part.pivot.res_thunder%&gt;</td>
+                        <td>&lt;%part.pivot.res_dragon%&gt;</td>
+                        <td>&lt;%part.pivot.res_dizzy%&gt;</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="col-sm-6" ng-show="damage_chart_C.length">
+               <table class="table table-condensed table-bordered">
+                  <thead>
+                     <tr>
+                        <th>Region</th>
+                        <th>Cut</th>
+                        <th>Impact</th>
+                        <th>Shot</th>
+                        <th>Fire</th>
+                        <th>Water</th>
+                        <th>Ice</th>
+                        <th>Thunder</th>
+                        <th>Dragon</th>
+                        <th>Dizzy</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr
+                        ng-repeat="part in damage_chart_C = (monster.monsterbodyparts | filter:{pivot:{type:'C'}})"
+                     >
+                        <td>&lt;%part.local_name%&gt;</td>
+                        <td>&lt;%part.pivot.res_cut%&gt;</td>
+                        <td>&lt;%part.pivot.res_impact%&gt;</td>
+                        <td>&lt;%part.pivot.res_shot%&gt;</td>
+                        <td>&lt;%part.pivot.res_fire%&gt;</td>
+                        <td>&lt;%part.pivot.res_water%&gt;</td>
+                        <td>&lt;%part.pivot.res_ice%&gt;</td>
+                        <td>&lt;%part.pivot.res_thunder%&gt;</td>
+                        <td>&lt;%part.pivot.res_dragon%&gt;</td>
+                        <td>&lt;%part.pivot.res_dizzy%&gt;</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-sm-6">
+               <table
+                  class="table table-bordered table-condensed"
+                  ng-if="monster.weaponspecialattacks.length"
+               >
+                  <thead>
+                     <tr>
+                        <th>Abnormal Status</th>
+                        <th>Initial</th>
+                        <th>Increase</th>
+                        <th>Max</th>
+                        <th>Duration</th>
+                        <th>Damage</th>
+                        <th>Reduction</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr ng-repeat="status in monster.weaponspecialattacks">
+                        <td>&lt;%status.local_name%&gt;</td>
+                        <td>&lt;%status.pivot.initial%&gt;</td>
+                        <td>&lt;%status.pivot.increase%&gt;</td>
+                        <td>&lt;%status.pivot.max%&gt;</td>
+                        <td>&lt;%status.pivot.duration%&gt;</td>
+                        <td>&lt;%status.pivot.damage%&gt;</td>
+                        <td>
+                           &lt;%status.pivot.reduction_amount%&gt;/&lt;%status.pivot.reduction_time%&gt;sec
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="col-sm-4">
+               <table class="table table-bordered table-condensed">
+                  <thead>
+                     <tr>
+                        <th>Item</th>
+                        <th>Normal</th>
+                        <th>Enraged</th>
+                        <th>Fatigued</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>
+                           <a
+                              href="https://kiranico.com/en/mh4u/item/pitfall-trap"
+                              >Pitfall Trap</a
+                           >
+                        </td>
+                        <td>15</td>
+                        <td>15</td>
+                        <td>25</td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <a
+                              href="https://kiranico.com/en/mh4u/item/flash-bomb"
+                              >Flash Bomb</a
+                           >
+                        </td>
+                        <td>20</td>
+                        <td>20</td>
+                        <td>30</td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <a
+                              href="https://kiranico.com/en/mh4u/item/shock-trap"
+                              >Shock Trap</a
+                           >
+                        </td>
+                        <td>12</td>
+                        <td>12</td>
+                        <td>20</td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <a
+                              href="https://kiranico.com/en/mh4u/item/sonic-bomb"
+                              >Sonic Bomb</a
+                           >
+                        </td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                     </tr>
+                     <tr>
+                        <td>Canopy Trap</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <h3>Item Drops</h3>
+         <div class="row">
+            <div class="col-sm-4">
+               <h4>Low</h4>
+               <table class="table table-condensed table-bordered">
+                  <tbody>
+                     <tr
+                        ng-repeat="item in monster.items | filter:{pivot:{rank:{id:1}}}"
+                     >
+                        <td class="shrink">
+                           &lt;%item.pivot.monsteritemmethod.local_name%&gt;
+                        </td>
+                        <td class="expand">
+                           <a
+                              href="<%item.link%>"
+                              ng-bind="item.local_name"
+                           ></a>
+                        </td>
+                        <td class="shrink">&lt;%item.pivot.quantity%&gt;</td>
+                        <td class="shrink">
+                           &lt;%item.pivot.percentage | percentage%&gt;
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="col-sm-4">
+               <h4>High</h4>
+               <table class="table table-condensed table-bordered">
+                  <tbody>
+                     <tr
+                        ng-repeat="item in monster.items | filter:{pivot:{rank:{id:2}}}"
+                     >
+                        <td class="shrink">
+                           &lt;%item.pivot.monsteritemmethod.local_name%&gt;
+                        </td>
+                        <td class="expand">
+                           <a
+                              href="<%item.link%>"
+                              ng-bind="item.local_name"
+                           ></a>
+                        </td>
+                        <td class="shrink">&lt;%item.pivot.quantity%&gt;</td>
+                        <td class="shrink">
+                           &lt;%item.pivot.percentage | percentage%&gt;
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="col-sm-4">
+               <h4>G</h4>
+               <table class="table table-condensed table-bordered">
+                  <tbody>
+                     <tr
+                        ng-repeat="item in monster.items | filter:{pivot:{rank:{id:3}}}"
+                     >
+                        <td class="shrink">
+                           &lt;%item.pivot.monsteritemmethod.local_name%&gt;
+                        </td>
+                        <td class="expand">
+                           <a
+                              href="<%item.link%>"
+                              ng-bind="item.local_name"
+                           ></a>
+                        </td>
+                        <td class="shrink">&lt;%item.pivot.quantity%&gt;</td>
+                        <td class="shrink">
+                           &lt;%item.pivot.percentage | percentage%&gt;
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <h4>Guild Quests</h4>
+         <div class="row">
+            <div class="col-sm-4">
+               <table class="table table-condensed table-bordered">
+                  <tbody>
+                     <tr ng-repeat="item in monster.monsterguildquestitems">
+                        <td ng-bind="item.pivot.level"></td>
+                        <td class="shrink">
+                           <a
+                              href="<%item.link%>"
+                              ng-bind="item.local_name"
+                           ></a>
+                        </td>
+                        <td ng-bind="item.pivot.quantity"></td>
+                        <td ng-bind="item.pivot.percentage | percentage"></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <h3>Quest Appearances</h3>
+         <div class="row">
+            <div class="col-sm-4">
+               <h4>Caravan</h4>
+               <table class="table table-condensed table-bordered">
+                  <tbody>
+                     <tr>
+                        <td class="shrink">Caravan 2</td>
+                        <td class="expand">
+                           <a
+                              href="https://kiranico.com/en/mh4u/quest/caravan/2/the-stinking-seltas"
+                              >The Stinking Seltas</a
+                           >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="shrink">Caravan 2</td>
+                        <td class="expand">
+                           <a
+                              href="https://kiranico.com/en/mh4u/quest/caravan/2/bug-appetit"
+                              >Bug Appétit</a
+                           >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="shrink">Caravan 5</td>
+                        <td class="expand">
+                           <a
+                              href="https://kiranico.com/en/mh4u/quest/caravan/5/the-royal-guard"
+                              >The Royal Guard</a
+                           >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="shrink">Caravan 6</td>
+                        <td class="expand">
+                           <a
+                              href="https://kiranico.com/en/mh4u/quest/caravan/6/catch-and-release"
+                              >Catch and Release</a
+                           >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="shrink">Caravan 8</td>
+                        <td class="expand">
+                           <a
+                              href="https://kiranico.com/en/mh4u/quest/caravan/8/primal-pests"
+                              >Primal Pests</a
+                           >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="shrink">Caravan 8</td>
+                        <td class="expand">
+                           <a
+                              href="https://kiranico.com/en/mh4u/quest/caravan/8/ladykiller"
+                              >Ladykiller</a
+                           >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="shrink">Caravan 9</td>
+                        <td class="expand">
+                           <a
+                              href="https://kiranico.com/en/mh4u/quest/caravan/9/advanced-risky-research"
+                              >Advanced: Risky Research</a
+                           >
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="col-sm-4">
+               <h4>Guild</h4>
+               <table class="table table-condensed table-bordered">
+                  <tbody>
+                     <tr>
+                        <td class="shrink">Guild 1</td>
+                        <td class="expand">
+                           <a
+                              href="https://kiranico.com/en/mh4u/quest/guild/1/bug-burger"
+                              >Bug Burger</a
+                           >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="shrink">Guild 3</td>
+                        <td class="expand">
+                           <a
+                              href="https://kiranico.com/en/mh4u/quest/guild/3/the-royal-guard"
+                              >The Royal Guard</a
+                           >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="shrink">Guild 3</td>
+                        <td class="expand">
+                           <a
+                              href="https://kiranico.com/en/mh4u/quest/guild/3/advanced-bug-buffet"
+                              >Advanced: Bug Buffet</a
+                           >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="shrink">Guild 4</td>
+                        <td class="expand">
+                           <a
+                              href="https://kiranico.com/en/mh4u/quest/guild/4/seltas-romance"
+                              >Seltas Romance</a
+                           >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="shrink">Guild 4</td>
+                        <td class="expand">
+                           <a
+                              href="https://kiranico.com/en/mh4u/quest/guild/4/seltas-romance"
+                              >Seltas Romance</a
+                           >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="shrink">Guild 4</td>
+                        <td class="expand">
+                           <a
+                              href="https://kiranico.com/en/mh4u/quest/guild/4/material-effect"
+                              >Material Effect</a
+                           >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="shrink">Guild 5</td>
+                        <td class="expand">
+                           <a
+                              href="https://kiranico.com/en/mh4u/quest/guild/5/queens-academy"
+                              >Queen's Academy</a
+                           >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="shrink">Guild 5</td>
+                        <td class="expand">
+                           <a
+                              href="https://kiranico.com/en/mh4u/quest/guild/5/advanced-bug-bite"
+                              >Advanced: Bug Bite</a
+                           >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="shrink">Guild 6</td>
+                        <td class="expand">
+                           <a
+                              href="https://kiranico.com/en/mh4u/quest/guild/6/advanced-mega-hunt-a-thon"
+                              >Advanced: Mega Hunt-a-thon</a
+                           >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="shrink">Guild 8</td>
+                        <td class="expand">
+                           <a
+                              href="https://kiranico.com/en/mh4u/quest/guild/8/advanced-bug-be-gone"
+                              >Advanced: Bug-Be-Gone</a
+                           >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="shrink">Guild 9</td>
+                        <td class="expand">
+                           <a
+                              href="https://kiranico.com/en/mh4u/quest/guild/9/strutting-the-royal-runway"
+                              >Strutting the Royal Runway</a
+                           >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="shrink">Guild 9</td>
+                        <td class="expand">
+                           <a
+                              href="https://kiranico.com/en/mh4u/quest/guild/9/advanced-mean-and-green"
+                              >Advanced: Mean and Green</a
+                           >
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="col-sm-4">
+               <h4>Event</h4>
+               <table class="table table-condensed table-bordered"></table>
+            </div>
+         </div>
+         <h3>Equipment</h3>
+         <div class="row">
+            <div class="col-sm-4">
+               <h4>Weapons</h4>
+               <table class="table table-condensed table-bordered">
+                  <tbody>
+                     <tr>
+                        <td>Sword</td>
+                        <td>
+                           <a
+                              href="https://kiranico.com/en/mh4u/weapon/sword/celestial-sword"
+                              >Celestial Sword</a
+                           >
+                        </td>
+                        <td>RARE-1</td>
+                     </tr>
+                     <tr>
+                        <td>Sword</td>
+                        <td>
+                           <a
+                              href="https://kiranico.com/en/mh4u/weapon/sword/celestial-arms"
+                              >Celestial Arms</a
+                           >
+                        </td>
+                        <td>RARE-2</td>
+                     </tr>
+                     <tr>
+                        <td>Dual Blades</td>
+                        <td>
+                           <a
+                              href="https://kiranico.com/en/mh4u/weapon/dualblades/whirlitwists"
+                              >Whirlitwists</a
+                           >
+                        </td>
+                        <td>RARE-1</td>
+                     </tr>
+                     <tr>
+                        <td>Dual Blades</td>
+                        <td>
+                           <a
+                              href="https://kiranico.com/en/mh4u/weapon/dualblades/whirlitricks"
+                              >Whirlitricks</a
+                           >
+                        </td>
+                        <td>RARE-2</td>
+                     </tr>
+                     <tr>
+                        <td>Hammer</td>
+                        <td>
+                           <a
+                              href="https://kiranico.com/en/mh4u/weapon/hammer/accelerated-hammer"
+                              >Accelerated Hammer</a
+                           >
+                        </td>
+                        <td>RARE-1</td>
+                     </tr>
+                     <tr>
+                        <td>Hammer</td>
+                        <td>
+                           <a
+                              href="https://kiranico.com/en/mh4u/weapon/hammer/boosted-hammer"
+                              >Boosted Hammer</a
+                           >
+                        </td>
+                        <td>RARE-2</td>
+                     </tr>
+                     <tr>
+                        <td>Hammer</td>
+                        <td>
+                           <a
+                              href="https://kiranico.com/en/mh4u/weapon/hammer/nitro-boost-hammer"
+                              >Nitro Boost Hammer</a
+                           >
+                        </td>
+                        <td>RARE-3</td>
+                     </tr>
+                     <tr>
+                        <td>Hammer</td>
+                        <td>
+                           <a
+                              href="https://kiranico.com/en/mh4u/weapon/hammer/full-throttle-mace"
+                              >Full Throttle Mace</a
+                           >
+                        </td>
+                        <td>RARE-5</td>
+                     </tr>
+                     <tr>
+                        <td>Hammer</td>
+                        <td>
+                           <a
+                              href="https://kiranico.com/en/mh4u/weapon/hammer/overclocker"
+                              >Overclocker</a
+                           >
+                        </td>
+                        <td>RARE-6</td>
+                     </tr>
+                     <tr>
+                        <td>Hammer</td>
+                        <td>
+                           <a
+                              href="https://kiranico.com/en/mh4u/weapon/hammer/logicbreaker"
+                              >Logicbreaker</a
+                           >
+                        </td>
+                        <td>RARE-9</td>
+                     </tr>
+                     <tr>
+                        <td>Gunlance</td>
+                        <td>
+                           <a
+                              href="https://kiranico.com/en/mh4u/weapon/gunlance/monsieur-gore"
+                              >Monsieur Gore</a
+                           >
+                        </td>
+                        <td>RARE-8</td>
+                     </tr>
+                     <tr>
+                        <td>Charge Blade</td>
+                        <td>
+                           <a
+                              href="https://kiranico.com/en/mh4u/weapon/chargeblade/schildsect"
+                              >Schildsect</a
+                           >
+                        </td>
+                        <td>RARE-4</td>
+                     </tr>
+                     <tr>
+                        <td>Charge Blade</td>
+                        <td>
+                           <a
+                              href="https://kiranico.com/en/mh4u/weapon/chargeblade/schildsect+"
+                              >Schildsect+</a
+                           >
+                        </td>
+                        <td>RARE-6</td>
+                     </tr>
+                     <tr>
+                        <td>Charge Blade</td>
+                        <td>
+                           <a
+                              href="https://kiranico.com/en/mh4u/weapon/chargeblade/galvanisect"
+                              >Galvanisect</a
+                           >
+                        </td>
+                        <td>RARE-8</td>
+                     </tr>
+                     <tr>
+                        <td>Insect Glaive</td>
+                        <td>
+                           <a
+                              href="https://kiranico.com/en/mh4u/weapon/insectglaive/sect-happa"
+                              >Sect Happa</a
+                           >
+                        </td>
+                        <td>RARE-5</td>
+                     </tr>
+                     <tr>
+                        <td>Light Bowgun</td>
+                        <td>
+                           <a
+                              href="https://kiranico.com/en/mh4u/weapon/lightbowgun/shell-shooter"
+                              >Shell Shooter</a
+                           >
+                        </td>
+                        <td>RARE-1</td>
+                     </tr>
+                     <tr>
+                        <td>Bow</td>
+                        <td>
+                           <a
+                              href="https://kiranico.com/en/mh4u/weapon/bow/heat-haze"
+                              >Heat Haze</a
+                           >
+                        </td>
+                        <td>RARE-1</td>
+                     </tr>
+                     <tr>
+                        <td>Bow</td>
+                        <td>
+                           <a
+                              href="https://kiranico.com/en/mh4u/weapon/bow/hulking-haze"
+                              >Hulking Haze</a
+                           >
+                        </td>
+                        <td>RARE-2</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-sm-12">
+               <ul class="pager">
+                  <li>
+                     <a href="https://kiranico.com/en/mh4u/monster/remobra"
+                        >← Remobra</a
+                     >
+                  </li>
+                  <li>
+                     <a
+                        href="https://kiranico.com/en/mh4u/monster/desert-seltas"
+                        >Desert Seltas →</a
+                     >
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+
+      <footer>
+         <hr />
+         <div class="container text-center">
+            <p class="text-grey">© 2024 Kiranico</p>
+         </div>
+      </footer>
+
+      <br />
+
+      <script src="https://cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+      <script src="/js/typeahead.bundle.js"></script>
+      <script src="/js/script.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/material.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/ripples.min.js"></script>
+      <script>
+         $(function () {
+            $.material.init();
+         });
+
+         $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+         });
+
+         // instantiate the bloodhound suggestion engine
+         var suggestion = new Bloodhound({
+            datumTokenizer: function (d) {
+               return Bloodhound.tokenizers.whitespace(d.n);
+            },
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            limit: 8,
+            prefetch: {
+               url: '/assets/prefetch_en_MH4U.json',
+               ttl: 86400000 * 3, // 7 days
+            },
+         });
+
+         suggestion.initialize();
+
+         $('#navbar-search')
+            .typeahead(
+               {
+                  highlight: true,
+               },
+               {
+                  displayKey: 'n',
+                  source: suggestion.ttAdapter(),
+                  templates: {
+                     suggestion: function (datum) {
+                        return [
+                           '<p>',
+                           datum.n,
+                           '<br>',
+                           '<small class="hidden-xs">',
+                           datum.l,
+                           '</small>',
+                           '</p>',
+                        ].join('\n');
+                     },
+                  },
+               }
+            )
+            .on('typeahead:selected', function (event, data, dataset) {
+               window.location.href = data.l;
+            });
+      </script>
+   </body>
+</html>

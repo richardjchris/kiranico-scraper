@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "puppeteer": "^23.5.0"
+  },
+  "name": "kiranico-scraper",
+  "version": "1.0.0",
+  "main": "kiranico-scraper.js",
+  "scripts": {
+    "start": "node kiranico-scraper.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Richard Christiansen",
+  "license": "ISC",
+  "description": "Program to scrape Kiranico's database"
+}
