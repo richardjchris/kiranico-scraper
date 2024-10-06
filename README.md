@@ -18,9 +18,9 @@ The goal of this application is to extract data from Kiranico's database as a JS
 # Supported games
 Games that are planned to be supported are as follows
 
-Monster Hunter 3 Ultimate
-Monster Hunter 4 Ultimate
-Monster Hunter Generations
-Monster Hunter Generations Ultimate
+* Monster Hunter 3 Ultimate
+* Monster Hunter 4 Ultimate
+* Monster Hunter Generations
+* Monster Hunter Generations Ultimate
 
 It is not planed to add other games for the moment.
