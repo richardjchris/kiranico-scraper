@@ -1,6 +1,6 @@
-This Node.js project is a work-in-progress scraper of Kiranico's database, to generate data as JSON API.
+*Note: This is a project meant to be a self-training exercise to create a web scraper and currently not intended for general use.*
 
-Also, keep in mind that this is more like a self training course than a really useful application.
+This Node.js project is a work-in-progress JSON file generator by scraping Kiranico's database.
 
 # Terms of use
 Monster Hunter™ is a registered trademark or trademark of Capcom Co., Ltd.
