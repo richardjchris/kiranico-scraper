@@ -1,12 +1,27 @@
+const fs = require('fs');
+const readline = require('node:readline');
+const puppeteer = require('puppeteer');
+
+function askURL(query) {
+   const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+   });
+
+   return new Promise((resolve) =>
+      rl.question(query, (ans) => {
+         rl.close();
+         resolve(ans);
+      })
+   );
+}
+
 (async () => {
-   const puppeteer = require('puppeteer');
-
-   const fs = require('fs');
-
+   const url = await askURL('Paste in URL to extract:\n');
    const browser = await puppeteer.launch();
 
    const page = await browser.newPage();
-   await page.goto('https://kiranico.com/en/mh4u/monster/seltas');
+   await page.goto(url);
 
    const dataPromise = await page.evaluate(() => {
       return Promise.resolve({ js_vars });
