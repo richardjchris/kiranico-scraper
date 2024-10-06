@@ -28,11 +28,11 @@ function askURL(query) {
    });
 
    const title = await page.title();
-   const name = await title.split(' ');
+   const name = await title.split(' - ');
    browser.close();
 
    const data = JSON.stringify(dataPromise);
-   fs.writeFile(`./${name[0]}.json`, data, (err) => {
+   fs.writeFile(`.json/${name[0]}.json`, data, (err) => {
       if (err) console.log(err);
       else {
          console.log('File written successfully\n');
