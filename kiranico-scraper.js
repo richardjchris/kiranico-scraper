@@ -1,15 +1,3 @@
-// const cheerio = require('cheerio');
-// const cors = require('cors')({ origin: true });
-
-// (async () => {
-//    const url = 'https://kiranico.com/en/mh4u/monster/seltas';
-//    const response = await fetch(url);
-
-//    const $ = cheerio.load(await response.text());
-//    //const $ = await cheerio.fromURL(url);
-//    console.log($.html());
-// })();
-
 (async () => {
    const puppeteer = require('puppeteer');
 
