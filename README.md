@@ -10,7 +10,7 @@ All data are taken from:
 https://kiranico.com
 
 # How to use the application
-This app is currently in-development and not intended to be used yet.
+This app is currently in-development and not intended for general use yet.
 
 ## Goal
 The goal of this application is to extract data from Kiranico's database as a JSON file.
