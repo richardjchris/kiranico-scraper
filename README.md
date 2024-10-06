@@ -1,4 +1,4 @@
-This project is a work-in-progress scraper of Kiranico's database, to generate data as JSON API.
+This Node.js project is a work-in-progress scraper of Kiranico's database, to generate data as JSON API.
 
 Also, keep in mind that this is more like a self training course than a really useful application.
 
